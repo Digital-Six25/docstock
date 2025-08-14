@@ -1,5 +1,5 @@
-import Link from "next/link"
-import { Button } from "@/components/ui/button"
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
 
 export function BrandsCTASection() {
   return (
@@ -8,7 +8,7 @@ export function BrandsCTASection() {
       <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
         style={{
-          backgroundImage: "url('/medical-brands-background.png')",
+          backgroundImage: "url('/hero/cta-hero.jpg')",
         }}
       >
         {/* Overlay for better text readability */}
@@ -18,9 +18,12 @@ export function BrandsCTASection() {
       {/* Content */}
       <div className="relative z-10 container mx-auto px-4 h-full flex items-center justify-center">
         <div className="text-center text-white max-w-3xl">
-          <h2 className="text-4xl md:text-5xl font-bold font-serif mb-4">Discover Trusted Medical Brands</h2>
+          <h2 className="text-4xl md:text-5xl font-bold font-serif mb-4">
+            Discover Trusted Medical Brands
+          </h2>
           <p className="text-lg md:text-xl mb-8 text-gray-200">
-            Explore our comprehensive collection of premium medical equipment from world-renowned manufacturers
+            Explore our comprehensive collection of premium medical equipment
+            from world-renowned manufacturers
           </p>
           <Link href="/brands">
             <Button
@@ -33,5 +36,5 @@ export function BrandsCTASection() {
         </div>
       </div>
     </section>
-  )
+  );
 }
