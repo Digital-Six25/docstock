@@ -29,7 +29,9 @@ export function ProductCard({ product, className = "" }: ProductCardProps) {
       .replace(/(^-|-$)/g, "")
 
   return (
-    <Card className={`group hover:scale-105 hover:shadow-xl transition-all duration-300 overflow-hidden ${className}`}>
+    <Card
+      className={`group hover:scale-105 hover:shadow-xl transition-all duration-300 overflow-hidden p-0 ${className}`}
+    >
       <Link href={`/products/${productSlug}`} className="block">
         <div className="relative overflow-hidden">
           <img

@@ -7,6 +7,7 @@ import { BrandCarousel } from "@/components/brand-carousel"
 import { FeaturedProducts } from "@/components/featured-products"
 import { Testimonials } from "@/components/testimonials"
 import { BrandsCTASection } from "@/components/brands-cta-section"
+import { FAQSection } from "@/components/faq-section"
 
 export default function HomePage() {
   return (
@@ -20,6 +21,7 @@ export default function HomePage() {
       <FeaturedProducts />
       <BrandsCTASection />
       <Testimonials />
+      <FAQSection />
     </main>
   )
 }
