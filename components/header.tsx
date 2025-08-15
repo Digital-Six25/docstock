@@ -100,17 +100,17 @@ export function Header() {
               </button>
 
               {isEquipmentOpen && (
-                <div className="absolute top-full left-0 mt-2 w-[800px] bg-white border border-gray-200 rounded-lg shadow-lg p-6 z-50">
-                  <div className="grid grid-cols-4 gap-6">
-                    {/* Equipment Types - 3 columns */}
-                    <div className="col-span-3">
-                      <h3 className="font-semibold text-gray-900 mb-4">Medical Equipment</h3>
-                      <div className="grid grid-cols-3 gap-2">
+                <div className="absolute top-full left-1/2 transform -translate-x-1/2 mt-2 w-[900px] bg-white border border-gray-200 rounded-lg shadow-lg overflow-hidden z-50 p-6">
+                  <div className="flex gap-8">
+                    {/* Equipment Types - Left side with 3 columns */}
+                    <div className="flex-1">
+                      <h3 className="font-semibold text-gray-900 mb-4 text-lg">Medical Equipment</h3>
+                      <div className="grid grid-cols-3 gap-x-6 gap-y-1">
                         {equipmentTypes.map((equipment, index) => (
                           <Link
                             key={index}
                             href={`/equipment/${equipment.toLowerCase().replace(/\s+/g, "-")}`}
-                            className="text-sm text-gray-600 hover:text-docstock-blue py-1"
+                            className="text-sm text-gray-600 hover:text-docstock-blue py-1 transition-colors"
                           >
                             {equipment}
                           </Link>
@@ -118,41 +118,37 @@ export function Header() {
                       </div>
                     </div>
 
-                    {/* Featured Equipment Images - 1 column */}
-                    <div className="col-span-1">
-                      <h3 className="font-semibold text-gray-900 mb-4">Featured</h3>
+                    {/* Featured Images - Right side with 4 tiles in 2x2 grid */}
+                    <div className="w-64">
+                      <h3 className="font-semibold text-gray-900 mb-4 text-lg">Featured Products</h3>
                       <div className="grid grid-cols-2 gap-2">
-                        <div className="bg-gray-100 rounded-lg p-2 hover:bg-gray-200 transition-colors">
-                          <img
-                            src="/ecg-machine.png"
-                            alt="ECG Machines"
-                            className="w-full h-12 object-cover rounded"
-                          />
-                          <p className="text-xs text-center mt-1">ECG Machines</p>
+                        <div className="relative group cursor-pointer rounded-lg overflow-hidden">
+                          <img src="/ecg-machine.png" alt="ECG Machines" className="w-full h-24 object-cover" />
+                          <div className="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
+                            <span className="text-white text-xs font-medium text-center px-2">ECG Machines</span>
+                          </div>
                         </div>
-                        <div className="bg-gray-100 rounded-lg p-2 hover:bg-gray-200 transition-colors">
+                        <div className="relative group cursor-pointer rounded-lg overflow-hidden">
                           <img
                             src="/blood-pressure-monitor.png"
                             alt="BP Monitors"
-                            className="w-full h-12 object-cover rounded"
+                            className="w-full h-24 object-cover"
                           />
-                          <p className="text-xs text-center mt-1">BP Monitors</p>
+                          <div className="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
+                            <span className="text-white text-xs font-medium text-center px-2">BP Monitors</span>
+                          </div>
                         </div>
-                        <div className="bg-gray-100 rounded-lg p-2 hover:bg-gray-200 transition-colors">
-                          <img
-                            src="/stethoscope.png"
-                            alt="Stethoscopes"
-                            className="w-full h-12 object-cover rounded"
-                          />
-                          <p className="text-xs text-center mt-1">Stethoscopes</p>
+                        <div className="relative group cursor-pointer rounded-lg overflow-hidden">
+                          <img src="/stethoscope.png" alt="Stethoscopes" className="w-full h-24 object-cover" />
+                          <div className="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
+                            <span className="text-white text-xs font-medium text-center px-2">Stethoscopes</span>
+                          </div>
                         </div>
-                        <div className="bg-gray-100 rounded-lg p-2 hover:bg-gray-200 transition-colors">
-                          <img
-                            src="/defibrillator.png"
-                            alt="Defibrillators"
-                            className="w-full h-12 object-cover rounded"
-                          />
-                          <p className="text-xs text-center mt-1">Defibrillators</p>
+                        <div className="relative group cursor-pointer rounded-lg overflow-hidden">
+                          <img src="/defibrillator.png" alt="Defibrillators" className="w-full h-24 object-cover" />
+                          <div className="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
+                            <span className="text-white text-xs font-medium text-center px-2">Defibrillators</span>
+                          </div>
                         </div>
                       </div>
                     </div>

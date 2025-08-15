@@ -1,20 +1,14 @@
-import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
-import { Input } from "@/components/ui/input";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
-import { Search, Star } from "lucide-react";
-import Image from "next/image";
+import { Button } from "@/components/ui/button"
+import { Badge } from "@/components/ui/badge"
+import { Input } from "@/components/ui/input"
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
+import { Search, Star } from "lucide-react"
+import Image from "next/image"
 
 export function HeroSection() {
   return (
     <section className="relative bg-gradient-to-br from-gray-50 to-white py-16 lg:py-24 overflow-hidden">
-      <div className="max-w-screen mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Left content */}
           <div className="space-y-8">
@@ -25,20 +19,19 @@ export function HeroSection() {
 
               <div className="space-y-4">
                 <h1 className="text-4xl lg:text-5xl font-bold text-gray-900 leading-tight">
-                  Medical Products For
-                  <br /> <span className="text-[#0088FF]"> Your Family</span>
+                  Medical Products{" "}
+                  <span className="inline-flex items-center">
+                    For Your Family
+                    
+                  </span>
                 </h1>
 
                 <p className="text-lg text-gray-600 leading-relaxed max-w-lg">
-                  Australia's largest medical retailer, stocked with worldwide
-                  trusted medical brands.
+                  Australia's largest medical retailer, stocked with worldwide trusted medical brands.
                 </p>
               </div>
 
-              <Button
-                size="lg"
-                className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-lg"
-              >
+              <Button size="lg" className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-lg">
                 Shop Now →
               </Button>
             </div>
@@ -53,10 +46,7 @@ export function HeroSection() {
                 <div>
                   <div className="flex items-center space-x-1">
                     {[...Array(5)].map((_, i) => (
-                      <Star
-                        key={i}
-                        className="w-4 h-4 fill-yellow-400 text-yellow-400"
-                      />
+                      <Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
                     ))}
                   </div>
                   <p className="text-sm text-gray-600">Happy Customer</p>
@@ -69,12 +59,12 @@ export function HeroSection() {
           <div className="relative flex justify-end">
             <div className="relative">
               {/* Main hero image - smaller and square */}
-              <div className="relative z-10 w-100 h-100 rounded-2xl overflow-hidden bg-gradient-to-br from-blue-50 to-green-50 flex items-center justify-center">
+              <div className="relative z-10 w-80 h-80 rounded-2xl overflow-hidden bg-gradient-to-br from-blue-50 to-green-50 flex items-center justify-center">
                 <Image
                   src="/medical-professional-package.png"
                   alt="Medical Professional"
-                  width={500}
-                  height={500}
+                  width={300}
+                  height={300}
                   className="object-cover"
                 />
               </div>
@@ -101,9 +91,7 @@ export function HeroSection() {
           </div>
           <div className="lg:col-span-3 bg-white rounded-2xl shadow-lg p-6">
             <div className="mb-4">
-              <h3 className="text-lg font-semibold text-gray-900 mb-2">
-                Search Your Products
-              </h3>
+              <h3 className="text-lg font-semibold text-gray-900 mb-2">Search Your Products</h3>
             </div>
 
             <div className="grid md:grid-cols-4 gap-4">
@@ -112,9 +100,7 @@ export function HeroSection() {
                   <SelectValue placeholder="Category Select" />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="diagnostic">
-                    Diagnostic Equipment
-                  </SelectItem>
+                  <SelectItem value="diagnostic">Diagnostic Equipment</SelectItem>
                   <SelectItem value="surgical">Surgical Instruments</SelectItem>
                   <SelectItem value="monitoring">Patient Monitoring</SelectItem>
                   <SelectItem value="supplies">Medical Supplies</SelectItem>
@@ -144,5 +130,5 @@ export function HeroSection() {
         </div>
       </div>
     </section>
-  );
+  )
 }
