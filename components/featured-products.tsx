@@ -1,5 +1,5 @@
-import { Button } from "@/components/ui/button"
-import { ProductCard } from "@/components/product-card"
+import { Button } from "@/components/ui/button";
+import { ProductCard } from "@/components/product-card";
 
 const featuredProducts = [
   {
@@ -46,16 +46,19 @@ const featuredProducts = [
     badge: null,
     features: ["OLED display", "Alarm function", "Data logging"],
   },
-]
+];
 
 export function FeaturedProducts() {
   return (
     <section className="py-20 bg-white">
-      <div className="max-w-7xl mx-auto ">
+      <div className="container mx-auto ">
         <div className="text-center mb-16">
-          <h2 className="text-3xl lg:text-4xl font-serif font-bold text-gray-900 mb-4">Featured Medical Equipment</h2>
+          <h2 className="text-3xl lg:text-4xl font-serif font-bold text-gray-900 mb-4">
+            Featured Medical Equipment
+          </h2>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            Discover our most popular and trusted medical devices, chosen by healthcare professionals worldwide.
+            Discover our most popular and trusted medical devices, chosen by
+            healthcare professionals worldwide.
           </p>
         </div>
 
@@ -66,11 +69,15 @@ export function FeaturedProducts() {
         </div>
 
         <div className="text-center mt-12">
-          <Button variant="outline" size="lg" className="border-blue-600 text-blue-600 hover:bg-blue-50 bg-transparent">
+          <Button
+            variant="outline"
+            size="lg"
+            className="border-blue-600 text-blue-600 hover:bg-blue-50 bg-transparent"
+          >
             View All Products
           </Button>
         </div>
       </div>
     </section>
-  )
+  );
 }

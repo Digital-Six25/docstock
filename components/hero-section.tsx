@@ -66,7 +66,7 @@ export function HeroSection() {
           </div>
 
           {/* Right content - Medical Professional */}
-          <div className="relative flex justify-center">
+          <div className="relative flex justify-end">
             <div className="relative">
               {/* Main hero image - smaller and square */}
               <div className="relative z-10 w-100 h-100 rounded-2xl overflow-hidden bg-gradient-to-br from-blue-50 to-green-50 flex items-center justify-center">
