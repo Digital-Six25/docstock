@@ -1,14 +1,23 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import Link from "next/link"
-import { Button } from "@/components/ui/button"
-import { Badge } from "@/components/ui/badge"
-import { ShoppingCart, Heart, Menu, X, Phone, Mail, ChevronDown } from "lucide-react"
-import { useCart } from "@/contexts/cart-context"
-import { useWishlist } from "@/contexts/wishlist-context"
-import { useAuth } from "@/contexts/auth-context"
-import { UserMenu } from "@/components/auth/user-menu"
+import { useState } from "react";
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+import {
+  ShoppingCart,
+  Heart,
+  Menu,
+  X,
+  Phone,
+  Mail,
+  ChevronDown,
+} from "lucide-react";
+import { useCart } from "@/contexts/cart-context";
+import { useWishlist } from "@/contexts/wishlist-context";
+import { useAuth } from "@/contexts/auth-context";
+import { UserMenu } from "@/components/auth/user-menu";
+import Image from "next/image";
 
 const equipmentTypes = [
   "Audiometers",
@@ -47,14 +56,14 @@ const equipmentTypes = [
   "Vaccine Fridges",
   "Vision Screening",
   "X-Ray Viewers",
-]
+];
 
 export function Header() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false)
-  const [isEquipmentOpen, setIsEquipmentOpen] = useState(false)
-  const { toggleCart, itemCount } = useCart()
-  const { itemCount: wishlistCount } = useWishlist()
-  const { isAuthenticated, isLoading } = useAuth()
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isEquipmentOpen, setIsEquipmentOpen] = useState(false);
+  const { toggleCart, itemCount } = useCart();
+  const { itemCount: wishlistCount } = useWishlist();
+  const { isAuthenticated, isLoading } = useAuth();
 
   return (
     <header className="bg-white border-b border-gray-200 sticky top-0 z-50">
@@ -100,16 +109,20 @@ export function Header() {
               </button>
 
               {isEquipmentOpen && (
-                <div className="absolute top-full left-1/2 transform -translate-x-1/2 mt-2 w-[900px] bg-white border border-gray-200 rounded-lg shadow-lg overflow-hidden z-50 p-6">
+                <div className="absolute top-full  transform -translate-x-2.5 mt-2 w-[70rem] bg-white border border-gray-200 rounded-lg shadow-lg overflow-hidden z-50 p-6">
                   <div className="flex gap-8">
                     {/* Equipment Types - Left side with 3 columns */}
                     <div className="flex-1">
-                      <h3 className="font-semibold text-gray-900 mb-4 text-lg">Medical Equipment</h3>
-                      <div className="grid grid-cols-3 gap-x-6 gap-y-1">
+                      <h3 className="font-semibold text-gray-900 mb-4 text-lg">
+                        Medical Equipment
+                      </h3>
+                      <div className="grid grid-cols-4 gap-x-2 gap-y-1">
                         {equipmentTypes.map((equipment, index) => (
                           <Link
                             key={index}
-                            href={`/equipment/${equipment.toLowerCase().replace(/\s+/g, "-")}`}
+                            href={`/equipment/${equipment
+                              .toLowerCase()
+                              .replace(/\s+/g, "-")}`}
                             className="text-sm text-gray-600 hover:text-docstock-blue py-1 transition-colors"
                           >
                             {equipment}
@@ -119,14 +132,19 @@ export function Header() {
                     </div>
 
                     {/* Featured Images - Right side with 4 tiles in 2x2 grid */}
-                    <div className="w-64">
-                      <h3 className="font-semibold text-gray-900 mb-4 text-lg">Featured Products</h3>
+                    <div className="w-100">
+                      <h3 className="font-semibold text-gray-900 mb-4 text-lg">
+                        Featured Products
+                      </h3>
                       <div className="grid grid-cols-2 gap-2">
                         <div className="relative group cursor-pointer rounded-lg overflow-hidden">
-                          <img src="/ecg-machine.png" alt="ECG Machines" className="w-full h-24 object-cover" />
-                          <div className="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
-                            <span className="text-white text-xs font-medium text-center px-2">ECG Machines</span>
-                          </div>
+                          <Image
+                            src="/ecg-machine.png"
+                            alt="ECG Machines"
+                            width={300}
+                            height={400}
+                            className="w-full h-24 object-cover"
+                          />
                         </div>
                         <div className="relative group cursor-pointer rounded-lg overflow-hidden">
                           <img
@@ -134,21 +152,20 @@ export function Header() {
                             alt="BP Monitors"
                             className="w-full h-24 object-cover"
                           />
-                          <div className="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
-                            <span className="text-white text-xs font-medium text-center px-2">BP Monitors</span>
-                          </div>
                         </div>
                         <div className="relative group cursor-pointer rounded-lg overflow-hidden">
-                          <img src="/stethoscope.png" alt="Stethoscopes" className="w-full h-24 object-cover" />
-                          <div className="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
-                            <span className="text-white text-xs font-medium text-center px-2">Stethoscopes</span>
-                          </div>
+                          <img
+                            src="/stethoscope.png"
+                            alt="Stethoscopes"
+                            className="w-full h-24 object-cover"
+                          />
                         </div>
                         <div className="relative group cursor-pointer rounded-lg overflow-hidden">
-                          <img src="/defibrillator.png" alt="Defibrillators" className="w-full h-24 object-cover" />
-                          <div className="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
-                            <span className="text-white text-xs font-medium text-center px-2">Defibrillators</span>
-                          </div>
+                          <img
+                            src="/defibrillator.png"
+                            alt="Defibrillators"
+                            className="w-full h-24 object-cover"
+                          />
                         </div>
                       </div>
                     </div>
@@ -157,22 +174,40 @@ export function Header() {
               )}
             </div>
 
-            <Link href="/accessories" className="text-gray-700 hover:text-docstock-blue font-medium">
+            <Link
+              href="/accessories"
+              className="text-gray-700 hover:text-docstock-blue font-medium"
+            >
               Accessories
             </Link>
-            <Link href="/consumables" className="text-gray-700 hover:text-docstock-blue font-medium">
+            <Link
+              href="/consumables"
+              className="text-gray-700 hover:text-docstock-blue font-medium"
+            >
               Consumables
             </Link>
-            <Link href="/instruments" className="text-gray-700 hover:text-docstock-blue font-medium">
+            <Link
+              href="/instruments"
+              className="text-gray-700 hover:text-docstock-blue font-medium"
+            >
               Instruments
             </Link>
-            <Link href="/brands" className="text-gray-700 hover:text-docstock-blue font-medium">
+            <Link
+              href="/brands"
+              className="text-gray-700 hover:text-docstock-blue font-medium"
+            >
               Brands
             </Link>
-            <Link href="/news" className="text-gray-700 hover:text-docstock-blue font-medium">
+            <Link
+              href="/news"
+              className="text-gray-700 hover:text-docstock-blue font-medium"
+            >
               News
             </Link>
-            <Link href="/on-sale" className="text-gray-700 hover:text-docstock-blue font-medium text-red-600">
+            <Link
+              href="/on-sale"
+              className="text-gray-700 hover:text-docstock-blue font-medium text-red-600"
+            >
               On Sale
             </Link>
           </nav>
@@ -190,7 +225,12 @@ export function Header() {
               </Link>
             </Button>
 
-            <Button variant="ghost" size="sm" className="relative" onClick={toggleCart}>
+            <Button
+              variant="ghost"
+              size="sm"
+              className="relative"
+              onClick={toggleCart}
+            >
               <ShoppingCart className="h-5 w-5" />
               {itemCount > 0 && (
                 <Badge className="absolute -top-2 -right-2 h-5 w-5 rounded-full p-0 flex items-center justify-center text-xs bg-docstock-blue">
@@ -206,7 +246,12 @@ export function Header() {
                     <UserMenu />
                   </div>
                 ) : (
-                  <Button variant="outline" size="sm" className="hidden md:inline-flex bg-transparent" asChild>
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    className="hidden md:inline-flex bg-transparent"
+                    asChild
+                  >
                     <Link href="/login">Login</Link>
                   </Button>
                 )}
@@ -214,8 +259,17 @@ export function Header() {
             )}
 
             {/* Mobile menu button */}
-            <Button variant="ghost" size="sm" className="lg:hidden" onClick={() => setIsMenuOpen(!isMenuOpen)}>
-              {isMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+            <Button
+              variant="ghost"
+              size="sm"
+              className="lg:hidden"
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+            >
+              {isMenuOpen ? (
+                <X className="h-5 w-5" />
+              ) : (
+                <Menu className="h-5 w-5" />
+              )}
             </Button>
           </div>
         </div>
@@ -224,32 +278,56 @@ export function Header() {
         {isMenuOpen && (
           <div className="lg:hidden border-t border-gray-200 py-4">
             <nav className="flex flex-col space-y-4">
-              <Link href="/equipment" className="text-gray-700 hover:text-docstock-blue font-medium">
+              <Link
+                href="/equipment"
+                className="text-gray-700 hover:text-docstock-blue font-medium"
+              >
                 Equipment
               </Link>
-              <Link href="/accessories" className="text-gray-700 hover:text-docstock-blue font-medium">
+              <Link
+                href="/accessories"
+                className="text-gray-700 hover:text-docstock-blue font-medium"
+              >
                 Accessories
               </Link>
-              <Link href="/consumables" className="text-gray-700 hover:text-docstock-blue font-medium">
+              <Link
+                href="/consumables"
+                className="text-gray-700 hover:text-docstock-blue font-medium"
+              >
                 Consumables
               </Link>
-              <Link href="/instruments" className="text-gray-700 hover:text-docstock-blue font-medium">
+              <Link
+                href="/instruments"
+                className="text-gray-700 hover:text-docstock-blue font-medium"
+              >
                 Instruments
               </Link>
-              <Link href="/brands" className="text-gray-700 hover:text-docstock-blue font-medium">
+              <Link
+                href="/brands"
+                className="text-gray-700 hover:text-docstock-blue font-medium"
+              >
                 Brands
               </Link>
-              <Link href="/news" className="text-gray-700 hover:text-docstock-blue font-medium">
+              <Link
+                href="/news"
+                className="text-gray-700 hover:text-docstock-blue font-medium"
+              >
                 News
               </Link>
-              <Link href="/on-sale" className="text-gray-700 hover:text-docstock-blue font-medium text-red-600">
+              <Link
+                href="/on-sale"
+                className="text-gray-700 hover:text-docstock-blue font-medium text-red-600"
+              >
                 On Sale
               </Link>
               {!isLoading && (
                 <>
                   {isAuthenticated ? (
                     <div className="pt-2 border-t border-gray-200">
-                      <Link href="/account" className="text-gray-700 hover:text-docstock-blue font-medium block py-2">
+                      <Link
+                        href="/account"
+                        className="text-gray-700 hover:text-docstock-blue font-medium block py-2"
+                      >
                         My Account
                       </Link>
                       <Link
@@ -260,7 +338,12 @@ export function Header() {
                       </Link>
                     </div>
                   ) : (
-                    <Button variant="outline" size="sm" className="w-fit bg-transparent" asChild>
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      className="w-fit bg-transparent"
+                      asChild
+                    >
                       <Link href="/login">Login</Link>
                     </Button>
                   )}
@@ -271,5 +354,5 @@ export function Header() {
         )}
       </div>
     </header>
-  )
+  );
 }

@@ -1,7 +1,7 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import { ChevronDown, Plus } from "lucide-react"
+import { useState } from "react";
+import { ChevronDown, Plus } from "lucide-react";
 
 const faqs = [
   {
@@ -44,14 +44,14 @@ const faqs = [
     answer:
       "Yes, we provide ongoing maintenance, calibration, and repair services for medical equipment. Regular maintenance ensures optimal performance and compliance with medical standards.",
   },
-]
+];
 
 export function FAQSection() {
-  const [openIndex, setOpenIndex] = useState<number | null>(null)
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   const toggleFAQ = (index: number) => {
-    setOpenIndex(openIndex === index ? null : index)
-  }
+    setOpenIndex(openIndex === index ? null : index);
+  };
 
   return (
     <section className="py-16 bg-gray-50">
@@ -63,14 +63,19 @@ export function FAQSection() {
               <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
                 Frequently
                 <br />
-                asked <span className="text-orange-500 font-script">Questions</span>
+                asked{" "}
+                <span className="text-orange-500 font-script">Questions</span>
               </h2>
             </div>
 
             {/* Illustration */}
             <div className="relative">
-              <div className="w-full max-w-md mx-auto">
-                <img src="/medical-laptop-question.png" alt="FAQ Illustration" className="w-full h-auto" />
+              <div className="max-w-xl mx-auto">
+                <img
+                  src="/images/faq.png"
+                  alt="FAQ Illustration"
+                  className="w-full h-full"
+                />
               </div>
             </div>
           </div>
@@ -78,12 +83,17 @@ export function FAQSection() {
           {/* Right side - FAQ Items */}
           <div className="space-y-4">
             {faqs.map((faq, index) => (
-              <div key={index} className="bg-white rounded-lg border border-gray-200 overflow-hidden">
+              <div
+                key={index}
+                className="bg-white rounded-lg border border-gray-200 overflow-hidden"
+              >
                 <button
                   onClick={() => toggleFAQ(index)}
                   className="w-full px-6 py-4 text-left flex items-center justify-between hover:bg-gray-50 transition-colors"
                 >
-                  <span className="font-semibold text-gray-900 pr-4">{faq.question}</span>
+                  <span className="font-semibold text-gray-900 pr-4">
+                    {faq.question}
+                  </span>
                   <div className="flex-shrink-0">
                     {openIndex === index ? (
                       <ChevronDown className="w-5 h-5 text-gray-600 transform rotate-180 transition-transform" />
@@ -96,7 +106,9 @@ export function FAQSection() {
                 {openIndex === index && (
                   <div className="px-6 pb-4">
                     <div className="pt-2 border-t border-gray-100">
-                      <p className="text-gray-600 leading-relaxed">{faq.answer}</p>
+                      <p className="text-gray-600 leading-relaxed">
+                        {faq.answer}
+                      </p>
                     </div>
                   </div>
                 )}
@@ -106,5 +118,5 @@ export function FAQSection() {
         </div>
       </div>
     </section>
-  )
+  );
 }

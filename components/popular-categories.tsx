@@ -1,4 +1,4 @@
-import Image from "next/image"
+import Image from "next/image";
 
 export function PopularCategories() {
   const categories = [
@@ -24,18 +24,21 @@ export function PopularCategories() {
     {
       id: 4,
       title: "Diabetic Care",
-      image: "/placeholder-wvsl1.png",
+      image: "/images/diabetic-care.jpg",
       description: "Diabetes management and monitoring equipment",
     },
-  ]
+  ];
 
   return (
     <section className="py-16 bg-white">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold text-gray-900 mb-4">Most Popular Category</h2>
+          <h2 className="text-3xl font-bold text-gray-900 mb-4">
+            Most Popular Category
+          </h2>
           <p className="text-gray-600 max-w-2xl mx-auto">
-            Explore our most sought-after medical equipment categories trusted by healthcare professionals
+            Explore our most sought-after medical equipment categories trusted
+            by healthcare professionals
           </p>
         </div>
 
@@ -51,8 +54,12 @@ export function PopularCategories() {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
               <div className="absolute bottom-4 left-4 text-white">
-                <h3 className="text-lg font-bold mb-1">{categories[0].title}</h3>
-                <p className="text-xs opacity-90 line-clamp-2">{categories[0].description}</p>
+                <h3 className="text-lg font-bold mb-1">
+                  {categories[0].title}
+                </h3>
+                <p className="text-xs opacity-90 line-clamp-2">
+                  {categories[0].description}
+                </p>
               </div>
             </div>
           </div>
@@ -68,8 +75,12 @@ export function PopularCategories() {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
               <div className="absolute bottom-4 left-4 text-white">
-                <h3 className="text-lg font-bold mb-1">{categories[1].title}</h3>
-                <p className="text-xs opacity-90 line-clamp-2">{categories[1].description}</p>
+                <h3 className="text-lg font-bold mb-1">
+                  {categories[1].title}
+                </h3>
+                <p className="text-xs opacity-90 line-clamp-2">
+                  {categories[1].description}
+                </p>
               </div>
             </div>
           </div>
@@ -85,11 +96,17 @@ export function PopularCategories() {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
               <div className="absolute bottom-6 left-6 text-white">
-                <h3 className="text-2xl font-bold mb-2">{categories[2].title}</h3>
-                <p className="text-sm opacity-90 line-clamp-3">{categories[2].description}</p>
+                <h3 className="text-2xl font-bold mb-2">
+                  {categories[2].title}
+                </h3>
+                <p className="text-sm opacity-90 line-clamp-3">
+                  {categories[2].description}
+                </p>
               </div>
               <div className="absolute top-6 left-6">
-                <div className="bg-blue-600 text-white px-4 py-2 rounded-full text-sm font-medium">Featured</div>
+                <div className="bg-blue-600 text-white px-4 py-2 rounded-full text-sm font-medium">
+                  Featured
+                </div>
               </div>
             </div>
           </div>
@@ -105,23 +122,17 @@ export function PopularCategories() {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
               <div className="absolute bottom-4 left-4 text-white">
-                <h3 className="text-xl font-bold mb-1">{categories[3].title}</h3>
-                <p className="text-sm opacity-90 line-clamp-2">{categories[3].description}</p>
+                <h3 className="text-xl font-bold mb-1">
+                  {categories[3].title}
+                </h3>
+                <p className="text-sm opacity-90 line-clamp-2">
+                  {categories[3].description}
+                </p>
               </div>
             </div>
           </div>
         </div>
-
-        {/* Navigation Dots */}
-        <div className="flex justify-center mt-8 space-x-2">
-          {[...Array(3)].map((_, i) => (
-            <button
-              key={i}
-              className={`w-3 h-3 rounded-full transition-colors ${i === 0 ? "bg-blue-600" : "bg-gray-300"}`}
-            />
-          ))}
-        </div>
       </div>
     </section>
-  )
+  );
 }
