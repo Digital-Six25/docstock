@@ -196,6 +196,45 @@ export const instrumentCategories = [
   "Diagnostic Lights",
 ]
 
+export const equipmentTypeMapping: Record<string, string> = {
+  audiometers: "Audiometers",
+  "blood-pressure-monitors": "Blood Pressure Monitors",
+  capnographs: "Capnographs",
+  cryotherapy: "Cryotherapy Equipment",
+  defibrillators: "Defibrillators",
+  dermatoscopes: "Dermatoscopes",
+  "diagnostic-analysis-testing": "Diagnostic Analysis Testing",
+  "diagnostic-sets": "Diagnostic Sets",
+  dopplers: "Doppler Systems",
+  "ear-irrigators": "Ear Irrigators",
+  "ecg-machines": "ECG Machines",
+  electrosurgery: "Electrosurgery Equipment",
+  "examination-couches": "Examination Couches",
+  lighting: "Medical Lighting",
+  "first-aid-kits": "First Aid Kits",
+  "first-aid-training": "First Aid Training Equipment",
+  "instrument-trolleys": "Instrument Trolleys",
+  ophthalmoscopes: "Ophthalmoscopes",
+  laryngoscopes: "Laryngoscopes",
+  otoscopes: "Otoscopes",
+  "patient-monitors": "Patient Monitors",
+  "patient-scales": "Patient Scales",
+  "pulse-oximeters": "Pulse Oximeters",
+  "reflex-hammers": "Reflex Hammers",
+  resuscitation: "Resuscitation Equipment",
+  sphygmomanometers: "Sphygmomanometers",
+  spirometers: "Spirometers",
+  stethoscopes: "Stethoscopes",
+  sterilisers: "Sterilisers",
+  "suction-pumps": "Suction Pumps",
+  "surgical-loupes": "Surgical Loupes",
+  thermometers: "Thermometers",
+  "tuning-forks": "Tuning Forks",
+  "vaccine-fridges": "Vaccine Fridges",
+  "vision-screening": "Vision Screening Equipment",
+  "x-ray-viewers": "X-Ray Viewers",
+}
+
 export const products: Product[] = [
   {
     id: 1,
@@ -367,6 +406,151 @@ export const products: Product[] = [
 
 export const allProducts: Product[] = [
   ...products, // existing products
+  // Equipment - ECG Machines
+  {
+    id: 11,
+    name: "Bionet Cardio Q-Series ECG Machine",
+    slug: "bionet-cardio-q-series-ecg-advanced",
+    price: 2499,
+    originalPrice: 2799,
+    rating: 4.8,
+    reviews: 24,
+    image: "/modern-ecg-machine.png",
+    images: ["/modern-ecg-machine.png"],
+    badge: "Best Seller",
+    features: ["Large touchscreen", "Built-in printer", "PDF export", "ST Map technology"],
+    description: "Advanced ECG machine with touchscreen interface and comprehensive diagnostic capabilities.",
+    specifications: {
+      Display: "10.4 inch color touchscreen",
+      Channels: "12-lead simultaneous acquisition",
+      Printer: "Built-in thermal printer",
+      Storage: "Internal memory + SD card",
+    },
+    category: "ecg-machines",
+    brand: "Bionet",
+    inStock: true,
+    stockCount: 15,
+  },
+  // Equipment - Stethoscopes
+  {
+    id: 12,
+    name: "Littmann Classic III Stethoscope",
+    slug: "littmann-classic-iii-stethoscope",
+    price: 199,
+    rating: 4.9,
+    reviews: 342,
+    image: "/professional-stethoscope.png",
+    images: ["/professional-stethoscope.png"],
+    badge: "Professional",
+    features: ["Dual-sided chest piece", "Tunable diaphragm", "Comfortable earpieces", "5-year warranty"],
+    description: "Professional cardiology stethoscope with exceptional acoustic performance.",
+    specifications: {
+      "Chest Piece": "Dual-sided",
+      "Tubing Length": "27 inches",
+      Weight: "150g",
+      Warranty: "5 years",
+    },
+    category: "stethoscopes",
+    brand: "3M Littmann",
+    inStock: true,
+    stockCount: 45,
+  },
+  // Equipment - Blood Pressure Monitors
+  {
+    id: 13,
+    name: "Omron Professional BP Monitor",
+    slug: "omron-professional-bp-monitor",
+    price: 299,
+    rating: 4.7,
+    reviews: 128,
+    image: "/images/products/bp-monitor.png",
+    images: ["/images/products/bp-monitor.png"],
+    badge: "Clinical Grade",
+    features: ["Automatic measurement", "Memory storage", "Large display", "Printer compatible"],
+    description: "Clinical-grade blood pressure monitor with automatic measurement and data storage.",
+    specifications: {
+      "Measurement Range": "Systolic: 60-280 mmHg",
+      Accuracy: "±3 mmHg",
+      Memory: "200 readings",
+      Display: "Large LCD",
+    },
+    category: "blood-pressure-monitors",
+    brand: "Omron",
+    inStock: true,
+    stockCount: 32,
+  },
+  // Equipment - Pulse Oximeters
+  {
+    id: 14,
+    name: "Masimo SET Pulse Oximeter",
+    slug: "masimo-set-pulse-oximeter",
+    price: 449,
+    rating: 4.8,
+    reviews: 89,
+    image: "/pulse-oximeter.png",
+    images: ["/pulse-oximeter.png"],
+    badge: "Hospital Grade",
+    features: ["SET technology", "Motion tolerance", "Low perfusion", "Alarm system"],
+    description: "Hospital-grade pulse oximeter with advanced SET technology for accurate readings.",
+    specifications: {
+      "SpO2 Range": "1-100%",
+      "Pulse Rate": "25-240 BPM",
+      Technology: "Masimo SET",
+      Display: "Color OLED",
+    },
+    category: "pulse-oximeters",
+    brand: "Masimo",
+    inStock: true,
+    stockCount: 18,
+  },
+  // Equipment - Defibrillators
+  {
+    id: 15,
+    name: "Philips HeartStart AED",
+    slug: "philips-heartstart-aed",
+    price: 1899,
+    rating: 4.9,
+    reviews: 67,
+    image: "/defibrillator.png",
+    images: ["/defibrillator.png"],
+    badge: "Life Saving",
+    features: ["Voice guidance", "CPR coaching", "Self-testing", "8-year warranty"],
+    description: "Reliable AED with clear voice guidance and comprehensive CPR coaching.",
+    specifications: {
+      Energy: "150J biphasic",
+      "Charge Time": "< 8 seconds",
+      Battery: "4-year standby",
+      Weight: "1.5 kg",
+    },
+    category: "defibrillators",
+    brand: "Philips",
+    inStock: true,
+    stockCount: 12,
+  },
+  // Equipment - Otoscopes
+  {
+    id: 16,
+    name: "Welch Allyn Otoscope",
+    slug: "welch-allyn-otoscope",
+    price: 189,
+    rating: 4.6,
+    reviews: 156,
+    image: "/placeholder.svg?height=300&width=300",
+    images: ["/placeholder.svg?height=300&width=300"],
+    badge: "Diagnostic",
+    features: ["LED illumination", "Fiber optic", "Rechargeable", "Multiple specula"],
+    description: "Professional otoscope with LED illumination and fiber optic technology.",
+    specifications: {
+      Illumination: "LED",
+      Power: "Rechargeable battery",
+      Magnification: "3x",
+      Warranty: "2 years",
+    },
+    category: "otoscopes",
+    brand: "Welch Allyn",
+    inStock: true,
+    stockCount: 28,
+  },
   // Equipment
   {
     id: 7,
@@ -498,4 +682,12 @@ export function searchProducts(query: string): Product[] {
       product.brand.toLowerCase().includes(lowercaseQuery) ||
       product.features.some((feature) => feature.toLowerCase().includes(lowercaseQuery)),
   )
+}
+
+export function getProductsByEquipmentType(equipmentType: string): Product[] {
+  return allProducts.filter((product) => product.category === equipmentType)
+}
+
+export function getAllProducts(): Product[] {
+  return allProducts
 }
