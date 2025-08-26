@@ -1,302 +1,295 @@
-"use client"
+"use client";
 
-import { useState, useMemo } from "react"
-import { Search, ArrowUpDown, Star, Users, Award } from "lucide-react"
-import { Input } from "@/components/ui/input"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { Button } from "@/components/ui/button"
-import { Header } from "@/components/header"
-import { Footer } from "@/components/footer"
-import Image from "next/image"
+import { useState, useMemo } from "react";
+import { Search, ArrowUpDown, Star, Users, Award } from "lucide-react";
+import { Input } from "@/components/ui/input";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import { Button } from "@/components/ui/button";
+import { Header } from "@/components/header";
+import { Footer } from "@/components/footer";
+import Image from "next/image";
 
 const brands = [
   {
-    name: "3M Health Care",
+    name: "Acuderm",
     category: "Medical Supplies",
-    image: "/brands/3m.png",
+    image: "/brands/acuderm.png",
     featured: false,
     products: 150,
     rating: 4.8,
   },
   {
-    name: "Abbott",
+    name: "Ambu",
     category: "Diagnostics",
-    image: "/brands/abbott.png",
+    image: "/brands/ambu.png",
     featured: false,
     products: 200,
     rating: 4.9,
   },
   {
-    name: "Medtronic",
+    name: "A&D",
     category: "Medical Technology",
-    image: "/brands/medtronic.png",
+    image: "/brands/and.png",
     featured: true,
     products: 300,
     rating: 4.9,
   },
   {
-    name: "Philips Healthcare",
+    name: "Bionet",
     category: "Health Technology",
-    image: "/brands/philips.png",
+    image: "/brands/bionet.png",
     featured: false,
     products: 250,
     rating: 4.7,
   },
   {
-    name: "Baxter",
+    name: "Bovie",
     category: "Medical Devices",
-    image: "/brands/baxter.png",
+    image: "/brands/bovie.webp",
     featured: false,
     products: 180,
     rating: 4.6,
   },
   {
-    name: "BD (Becton Dickinson)",
+    name: "Brymill",
     category: "Medical Technology",
-    image: "/brands/bd.png",
+    image: "/brands/brymill.jpeg",
     featured: false,
     products: 220,
     rating: 4.8,
   },
   {
-    name: "Boston Scientific",
+    name: "Clever Clogger",
     category: "Medical Devices",
-    image: "/brands/boston-scientific.png",
+    image: "/brands/clever.webp",
     featured: false,
     products: 190,
     rating: 4.7,
   },
   {
-    name: "Cardinal Health",
+    name: "Coinfy Care",
     category: "Healthcare Services",
-    image: "/brands/cardinal-health.png",
+    image: "/brands/coinfy.webp",
     featured: false,
     products: 160,
     rating: 4.5,
   },
   {
-    name: "Covidien",
+    name: "Cortex",
     category: "Medical Devices",
-    image: "/brands/covidien.png",
+    image: "/brands/cortex.jpg",
     featured: false,
     products: 140,
     rating: 4.6,
   },
   {
-    name: "Danaher",
+    name: "Defib Tech",
     category: "Life Sciences",
-    image: "/brands/danaher.png",
+    image: "/brands/defib.jpg",
     featured: false,
     products: 210,
     rating: 4.8,
   },
   {
-    name: "Edwards Lifesciences",
+    name: "Dermlite",
     category: "Cardiovascular",
-    image: "/brands/edwards.png",
+    image: "/brands/dermlite.avif",
     featured: false,
     products: 120,
     rating: 4.9,
   },
   {
-    name: "GE Healthcare",
+    name: "Freezpen",
     category: "Medical Imaging",
-    image: "/brands/ge-healthcare.png",
+    image: "/brands/freezpen.png",
     featured: true,
     products: 280,
     rating: 4.8,
   },
   {
-    name: "Hologic",
+    name: "Hadeco",
     category: "Women's Health",
-    image: "/brands/hologic.png",
+    image: "/brands/hadeco.png",
     featured: false,
     products: 170,
     rating: 4.7,
   },
   {
-    name: "Johnson & Johnson",
+    name: "HealthTec",
     category: "Medical Devices",
-    image: "/brands/jnj.png",
+    image: "/brands/healthtec.png",
     featured: false,
     products: 230,
     rating: 4.6,
   },
   {
-    name: "Siemens Healthineers",
+    name: "HeartSine",
     category: "Medical Technology",
-    image: "/brands/siemens.png",
+    image: "/brands/heartsine.jpg",
     featured: false,
     products: 190,
     rating: 4.8,
   },
   {
-    name: "Stryker",
+    name: "ICS Pacific",
     category: "Medical Technology",
-    image: "/brands/stryker.png",
+    image: "/brands/ics.png",
     featured: false,
     products: 210,
     rating: 4.9,
   },
   {
-    name: "Thermo Fisher Scientific",
+    name: "LogTag",
     category: "Life Sciences",
-    image: "/brands/thermo-fisher.png",
+    image: "/brands/logtag.png",
     featured: false,
     products: 200,
     rating: 4.7,
   },
   {
-    name: "Zimmer Biomet",
+    name: "Maggy Lamp",
     category: "Musculoskeletal",
-    image: "/brands/zimmer.png",
+    image: "/brands/maggylamp.png",
     featured: false,
     products: 180,
     rating: 4.6,
   },
   {
-    name: "Olympus",
-    category: "Medical Systems",
-    image: "/brands/olympus.png",
-    featured: false,
-    products: 170,
-    rating: 4.8,
-  },
-  {
-    name: "Mindray",
+    name: "Nonin",
     category: "Medical Equipment",
-    image: "/brands/mindray.png",
+    image: "/brands/nonin.jpg",
     featured: false,
     products: 160,
     rating: 4.7,
   },
   {
-    name: "Draeger",
+    name: "Meditroll",
+    category: "Medical Systems",
+    image: "/brands/meditroll.avif",
+    featured: false,
+    products: 170,
+    rating: 4.8,
+  },
+  {
+    name: "Physio Control",
     category: "Medical Safety",
-    image: "/brands/draeger.png",
+    image: "/brands/physio.jpg",
     featured: false,
     products: 150,
     rating: 4.6,
   },
   {
-    name: "Masimo",
+    name: "Prestan",
     category: "Patient Monitoring",
-    image: "/brands/masimo.png",
+    image: "/brands/prestan.png",
     featured: false,
     products: 140,
     rating: 4.8,
   },
   {
-    name: "Nihon Kohden",
+    name: "Riester",
     category: "Medical Electronics",
-    image: "/brands/nihon-kohden.png",
+    image: "/brands/riester.jpg",
     featured: false,
     products: 130,
     rating: 4.7,
   },
   {
-    name: "Spacelabs Healthcare",
+    name: "Roche",
     category: "Patient Monitoring",
-    image: "/brands/spacelabs.png",
+    image: "/brands/roche.png",
     featured: false,
     products: 120,
     rating: 4.9,
   },
   {
-    name: "Welch Allyn",
+    name: "Rose Micro Solutions",
     category: "Medical Devices",
-    image: "/brands/welch-allyn.png",
+    image: "/brands/rose.png",
     featured: false,
     products: 110,
     rating: 4.8,
   },
   {
-    name: "Zoll Medical",
+    name: "Seca Precision Medicine",
     category: "Resuscitation",
-    image: "/brands/zoll.png",
+    image: "/brands/seca.png",
     featured: false,
     products: 100,
     rating: 4.7,
   },
   {
-    name: "Carestream Health",
+    name: "Theia Eye Block",
     category: "Medical Imaging",
-    image: "/brands/carestream.png",
+    image: "/brands/theia.png",
     featured: false,
     products: 90,
     rating: 4.6,
   },
   {
-    name: "Fujifilm Healthcare",
+    name: "Vitalograph",
     category: "Medical Imaging",
-    image: "/brands/fujifilm.png",
+    image: "/brands/vitalograph.png",
     featured: false,
     products: 80,
     rating: 4.8,
   },
   {
-    name: "Hoya Corporation",
+    name: "Welch Allyn",
     category: "Medical Endoscopy",
-    image: "/brands/hoya.png",
+    image: "/brands/welch.jpg",
     featured: false,
     products: 70,
     rating: 4.7,
   },
   {
-    name: "Karl Storz",
+    name: "Zoll",
     category: "Endoscopy",
-    image: "/brands/karl-storz.png",
+    image: "/brands/zoll.png",
     featured: false,
     products: 60,
     rating: 4.6,
   },
-  {
-    name: "Pentax Medical",
-    category: "Endoscopy",
-    image: "/brands/pentax.png",
-    featured: false,
-    products: 50,
-    rating: 4.8,
-  },
-  {
-    name: "Smith & Nephew",
-    category: "Medical Technology",
-    image: "/brands/smith-nephew.png",
-    featured: false,
-    products: 40,
-    rating: 4.7,
-  },
-]
+];
 
 export default function BrandsPage() {
-  const [searchTerm, setSearchTerm] = useState("")
-  const [sortOrder, setSortOrder] = useState<"asc" | "desc">("asc")
-  const [currentPage, setCurrentPage] = useState(1)
-  const brandsPerPage = 12
+  const [searchTerm, setSearchTerm] = useState("");
+  const [sortOrder, setSortOrder] = useState<"asc" | "desc">("asc");
+  const [currentPage, setCurrentPage] = useState(1);
+  const brandsPerPage = 12;
 
   const filteredAndSortedBrands = useMemo(() => {
     const filtered = brands.filter(
       (brand) =>
         brand.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        brand.category.toLowerCase().includes(searchTerm.toLowerCase()),
-    )
+        brand.category.toLowerCase().includes(searchTerm.toLowerCase())
+    );
 
     return filtered.sort((a, b) => {
       if (sortOrder === "asc") {
-        return a.name.localeCompare(b.name)
+        return a.name.localeCompare(b.name);
       } else {
-        return b.name.localeCompare(a.name)
+        return b.name.localeCompare(a.name);
       }
-    })
-  }, [searchTerm, sortOrder])
+    });
+  }, [searchTerm, sortOrder]);
 
-  const totalPages = Math.ceil(filteredAndSortedBrands.length / brandsPerPage)
-  const startIndex = (currentPage - 1) * brandsPerPage
-  const currentBrands = filteredAndSortedBrands.slice(startIndex, startIndex + brandsPerPage)
+  const totalPages = Math.ceil(filteredAndSortedBrands.length / brandsPerPage);
+  const startIndex = (currentPage - 1) * brandsPerPage;
+  const currentBrands = filteredAndSortedBrands.slice(
+    startIndex,
+    startIndex + brandsPerPage
+  );
 
   useMemo(() => {
-    setCurrentPage(1)
-  }, [searchTerm, sortOrder])
+    setCurrentPage(1);
+  }, [searchTerm, sortOrder]);
 
   return (
     <>
@@ -306,12 +299,19 @@ export default function BrandsPage() {
         <section className="relative bg-docstock-blue text-white py-20">
           <div className="absolute inset-0 bg-gradient-to-r from-docstock-blue to-blue-700"></div>
           <div className="relative container mx-auto px-4 text-center">
-            <h1 className="text-4xl md:text-6xl font-bold font-serif mb-6">Trusted Medical Brands</h1>
+            <h1 className="text-4xl md:text-6xl font-bold font-serif mb-6">
+              Trusted Medical Brands
+            </h1>
             <p className="text-xl md:text-2xl text-blue-100 max-w-3xl mx-auto mb-8">
-              Discover premium medical equipment from world-renowned manufacturers committed to healthcare excellence
+              Discover premium medical equipment from world-renowned
+              manufacturers committed to healthcare excellence
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" variant="secondary" className="bg-white text-docstock-blue hover:bg-gray-100">
+              <Button
+                size="lg"
+                variant="secondary"
+                className="bg-white text-docstock-blue hover:bg-gray-100"
+              >
                 <Award className="mr-2 h-5 w-5" />
                 View Featured Brands
               </Button>
@@ -336,7 +336,9 @@ export default function BrandsPage() {
                 <div className="text-gray-600">Trusted Brands</div>
               </div>
               <div className="space-y-2">
-                <div className="text-3xl font-bold text-docstock-blue">5000+</div>
+                <div className="text-3xl font-bold text-docstock-blue">
+                  5000+
+                </div>
                 <div className="text-gray-600">Medical Products</div>
               </div>
               <div className="space-y-2">
@@ -365,9 +367,14 @@ export default function BrandsPage() {
               </div>
 
               <div className="flex items-center gap-4">
-                <span className="text-sm text-gray-600">{filteredAndSortedBrands.length} brands found</span>
+                <span className="text-sm text-gray-600">
+                  {filteredAndSortedBrands.length} brands found
+                </span>
 
-                <Select value={sortOrder} onValueChange={(value: "asc" | "desc") => setSortOrder(value)}>
+                <Select
+                  value={sortOrder}
+                  onValueChange={(value: "asc" | "desc") => setSortOrder(value)}
+                >
                   <SelectTrigger className="w-48">
                     <ArrowUpDown className="h-4 w-4 mr-2" />
                     <SelectValue />
@@ -404,8 +411,12 @@ export default function BrandsPage() {
                           </div>
                         </div>
                         <div className="absolute bottom-6 left-6 text-white">
-                          <h3 className="text-2xl font-bold mb-2">{currentBrands[0].name}</h3>
-                          <p className="text-sm opacity-90 mb-2">{currentBrands[0].category}</p>
+                          <h3 className="text-2xl font-bold mb-2">
+                            {currentBrands[0].name}
+                          </h3>
+                          <p className="text-sm opacity-90 mb-2">
+                            {currentBrands[0].category}
+                          </p>
                           <div className="flex items-center gap-4 text-xs">
                             <div className="flex items-center gap-1">
                               <Star className="h-3 w-3 fill-yellow-400 text-yellow-400" />
@@ -420,7 +431,10 @@ export default function BrandsPage() {
                 )}
 
                 {currentBrands.slice(1, 7).map((brand, index) => (
-                  <div key={brand.name} className="col-span-1 row-span-1 group cursor-pointer">
+                  <div
+                    key={brand.name}
+                    className="col-span-1 row-span-1 group cursor-pointer"
+                  >
                     <div className="relative overflow-hidden rounded-2xl bg-white shadow-md hover:shadow-lg transition-all duration-300 h-full">
                       <div className="relative h-full">
                         <Image
@@ -431,8 +445,12 @@ export default function BrandsPage() {
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
                         <div className="absolute bottom-4 left-4 text-white">
-                          <h3 className="text-lg font-bold mb-1">{brand.name}</h3>
-                          <p className="text-xs opacity-90 mb-1">{brand.category}</p>
+                          <h3 className="text-lg font-bold mb-1">
+                            {brand.name}
+                          </h3>
+                          <p className="text-xs opacity-90 mb-1">
+                            {brand.category}
+                          </p>
                           <div className="flex items-center gap-2 text-xs">
                             <div className="flex items-center gap-1">
                               <Star className="h-3 w-3 fill-yellow-400 text-yellow-400" />
@@ -458,8 +476,12 @@ export default function BrandsPage() {
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
                         <div className="absolute bottom-4 left-4 text-white">
-                          <h3 className="text-xl font-bold mb-1">{currentBrands[7].name}</h3>
-                          <p className="text-sm opacity-90 mb-2">{currentBrands[7].category}</p>
+                          <h3 className="text-xl font-bold mb-1">
+                            {currentBrands[7].name}
+                          </h3>
+                          <p className="text-sm opacity-90 mb-2">
+                            {currentBrands[7].category}
+                          </p>
                           <div className="flex items-center gap-4 text-sm">
                             <div className="flex items-center gap-1">
                               <Star className="h-4 w-4 fill-yellow-400 text-yellow-400" />
@@ -475,7 +497,9 @@ export default function BrandsPage() {
               </div>
             ) : (
               <div className="text-center py-12">
-                <p className="text-gray-500 text-lg">No brands found matching your search criteria.</p>
+                <p className="text-gray-500 text-lg">
+                  No brands found matching your search criteria.
+                </p>
               </div>
             )}
 
@@ -495,8 +519,12 @@ export default function BrandsPage() {
                       />
                       <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300"></div>
                       <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-4">
-                        <h3 className="text-white font-semibold text-lg mb-1">{brand.name}</h3>
-                        <p className="text-gray-200 text-sm mb-2">{brand.category}</p>
+                        <h3 className="text-white font-semibold text-lg mb-1">
+                          {brand.name}
+                        </h3>
+                        <p className="text-gray-200 text-sm mb-2">
+                          {brand.category}
+                        </p>
                         <div className="flex items-center gap-3 text-xs text-gray-300">
                           <div className="flex items-center gap-1">
                             <Star className="h-3 w-3 fill-yellow-400 text-yellow-400" />
@@ -515,26 +543,36 @@ export default function BrandsPage() {
               <div className="flex justify-center items-center gap-2 mt-12">
                 <Button
                   variant="outline"
-                  onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
+                  onClick={() =>
+                    setCurrentPage((prev) => Math.max(prev - 1, 1))
+                  }
                   disabled={currentPage === 1}
                 >
                   Previous
                 </Button>
 
-                {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
-                  <Button
-                    key={page}
-                    variant={currentPage === page ? "default" : "outline"}
-                    onClick={() => setCurrentPage(page)}
-                    className={currentPage === page ? "bg-docstock-blue hover:bg-docstock-blue/90" : ""}
-                  >
-                    {page}
-                  </Button>
-                ))}
+                {Array.from({ length: totalPages }, (_, i) => i + 1).map(
+                  (page) => (
+                    <Button
+                      key={page}
+                      variant={currentPage === page ? "default" : "outline"}
+                      onClick={() => setCurrentPage(page)}
+                      className={
+                        currentPage === page
+                          ? "bg-docstock-blue hover:bg-docstock-blue/90"
+                          : ""
+                      }
+                    >
+                      {page}
+                    </Button>
+                  )
+                )}
 
                 <Button
                   variant="outline"
-                  onClick={() => setCurrentPage((prev) => Math.min(prev + 1, totalPages))}
+                  onClick={() =>
+                    setCurrentPage((prev) => Math.min(prev + 1, totalPages))
+                  }
                   disabled={currentPage === totalPages}
                 >
                   Next
@@ -547,13 +585,19 @@ export default function BrandsPage() {
         {/* CTA Banner Section */}
         <section className="bg-gradient-to-r from-docstock-blue to-blue-700 text-white py-16">
           <div className="container mx-auto px-4 text-center">
-            <h2 className="text-3xl font-bold mb-4">Partner with Leading Medical Brands</h2>
+            <h2 className="text-3xl font-bold mb-4">
+              Partner with Leading Medical Brands
+            </h2>
             <p className="text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
-              Join thousands of healthcare professionals who trust DocStock for premium medical equipment from
-              world-class manufacturers.
+              Join thousands of healthcare professionals who trust DocStock for
+              premium medical equipment from world-class manufacturers.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" variant="secondary" className="bg-white text-docstock-blue hover:bg-gray-100">
+              <Button
+                size="lg"
+                variant="secondary"
+                className="bg-white text-docstock-blue hover:bg-gray-100"
+              >
                 Request Catalog
               </Button>
               <Button
@@ -569,5 +613,5 @@ export default function BrandsPage() {
       </div>
       <Footer />
     </>
-  )
+  );
 }
